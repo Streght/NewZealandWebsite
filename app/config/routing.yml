@@ -1,0 +1,3 @@
+uniteam_presentation:
+    resource: "@UniteamPresentationBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,4 @@
+services:
+#    uniteam_presentation.example:
+#        class: Uniteam\PresentationBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
