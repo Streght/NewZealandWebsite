@@ -20,7 +20,9 @@
         <link rel="stylesheet" href="{{ asset('bundles/uniteampresentation/css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/uniteampresentation/css/style-desktop.css') }}" />
     </head>
-    <body class="no-sidebar">
+    <body 
+        {% if currentpage == "presentation" %}class="homepage"{%else%}class="no-sidebar"{%endif%}
+        >
 
         <!-- Header -->
         <div id="header">
@@ -28,8 +30,8 @@
 
                 <!-- Logo -->
                 <div id="logo">
-                    <h1><a href="#">Iridium</a></h1>
-                    <span>Design by TEMPLATED</span>
+                    <h1>Nouvelle-Zelande</h1>
+                    <span>Voyage au pays des kiwis</span>
                 </div>
 
                 {% set mainmenu = ["presentation", "histoire", "photos", "sport", "infos", "about"]%}
@@ -54,7 +56,7 @@
         <!-- Copyright -->
         <div id="copyright">
             <div class="container">
-                Design: <a href="http://templated.co">TEMPLATED</a>
+                Design: <a href="http://templated.co">TEMPLATED</a> &nbsp;&nbsp;&nbsp;&nbsp; {% block textsource %}Text:{% endblock %} <a href="{% block sourceurl %}{% endblock %}">{% block sourcename %}{% endblock %}</a>
             </div>
         </div>
 
