@@ -2,6 +2,11 @@
 
 {% block title %}NZ - Paysages{% endblock %}
 
+
+{% block scriptassets %}
+    <script src="{{ asset('bundles/uniteampresentation/js/gallery.js') }}"></script>
+{% endblock %}
+
 {% block main %}
     <div id="main">
         <div class="container">
@@ -39,13 +44,20 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block textsource %}{% endblock %}
+
+{% block script %}
     <script>
+        var src = "{{ asset('bundles/uniteampresentation/images/' ~ 'src' ~ '.jpg') }}";
+        
         var linksLeft = document.getElementsByClassName('thumbsleft'),
                 linksLenLeft = linksLeft.length;
 
         for (var i = 0; i < linksLenLeft; i++) {
             linksLeft[i].onclick = function () {
-                displayImg(this);
+                displayImg(this, src);
                 return false;
             };
         }
@@ -55,36 +67,14 @@
 
         for (var i = 0; i < linksLenRight; i++) {
             linksRight[i].onclick = function () {
-                displayImg(this);
+                displayImg(this, src);
                 return false;
             };
         }
-
-        function displayImg(link) {
-
-            document.getElementById('copyright').style.display = 'none';
-
-            var img = new Image(),
-                    overlay = document.getElementById('overlay');
-
-            img.onload = function () {
-                overlay.innerHTML = '';
-                overlay.appendChild(img);
-            };
-
-            var src = "{{ asset('bundles/uniteampresentation/images/' ~ 'src' ~ '.jpg') }}";
-            img.src = src.replace('src', link.getAttribute("href"));
-
-            $(overlay).fadeIn("slow");
-        }
-
+        
         document.getElementById('overlay').onclick = function () {
             $(this).fadeOut("slow");
             document.getElementById('copyright').style.display = 'block';
         };
-
     </script>
-
 {% endblock %}
-
-{% block textsource %}{% endblock %}

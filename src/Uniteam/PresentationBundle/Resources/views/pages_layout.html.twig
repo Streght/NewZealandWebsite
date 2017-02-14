@@ -15,6 +15,7 @@
         <script src="{{ asset('bundles/uniteampresentation/js/skel.min.js') }}"></script>
         <script src="{{ asset('bundles/uniteampresentation/js/skel-panels.min.js') }}"></script>
         <script src="{{ asset('bundles/uniteampresentation/js/init.js') }}"></script>
+        {% block scriptassets %}{% endblock %}
 
         <link rel="stylesheet" href="{{ asset('bundles/uniteampresentation/css/skel-noscript.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/uniteampresentation/css/style.css') }}" />
@@ -50,8 +51,7 @@
         </div>
 
         <!-- Main -->
-        {% block main %}
-        {% endblock %}
+        {% block main %}{% endblock %}
 
         <!-- Copyright -->
         <div id="copyright">
@@ -62,3 +62,5 @@
 
     </body>
 </html>
+
+{% block script %}{% endblock %}
