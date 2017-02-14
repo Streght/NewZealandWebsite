@@ -15,14 +15,76 @@
                             <span class="byline">Une terre de contrastes, entre neige et océan</span>
                         </header>
                     </section>
+
+                    <div class="images">
+                        <a href="photos1" class="thumbsleft"><img src="{{ asset('bundles/uniteampresentation/images/thumbs/photos1.jpg') }}" alt="paysage1" /></a>
+                        <a href="photos2" class="thumbsright"><img src="{{ asset('bundles/uniteampresentation/images/thumbs/photos2.jpg') }}" alt="paysage2" /></a>
+                    </div>
+
+                    <div class="images">
+                        <a href="photos3" class="thumbsleft"><img src="{{ asset('bundles/uniteampresentation/images/thumbs/photos3.jpg') }}" alt="paysage3" /></a>
+                        <a href="photos4" class="thumbsright"><img src="{{ asset('bundles/uniteampresentation/images/thumbs/photos4.jpg') }}" alt="paysage4" /></a>
+                    </div>
+
+                    <div class="imagesbottom">
+                        <a href="photos5" class="thumbsleft"><img src="{{ asset('bundles/uniteampresentation/images/thumbs/photos5.jpg') }}" alt="paysage5" /></a>
+                        <a href="photos6" class="thumbsright"><img src="{{ asset('bundles/uniteampresentation/images/thumbs/photos6.jpg') }}" alt="paysage6" /></a>
+                    </div>
+
                 </div>
+
+                <div id="overlay"></div>
 
             </div>
         </div>
     </div>
 
+    <script>
+        var linksLeft = document.getElementsByClassName('thumbsleft'),
+                linksLenLeft = linksLeft.length;
+
+        for (var i = 0; i < linksLenLeft; i++) {
+            linksLeft[i].onclick = function () {
+                displayImg(this);
+                return false;
+            };
+        }
+
+        var linksRight = document.getElementsByClassName('thumbsright'),
+                linksLenRight = linksRight.length;
+
+        for (var i = 0; i < linksLenRight; i++) {
+            linksRight[i].onclick = function () {
+                displayImg(this);
+                return false;
+            };
+        }
+
+        function displayImg(link) {
+
+            document.getElementById('copyright').style.display = 'none';
+
+            var img = new Image(),
+                    overlay = document.getElementById('overlay');
+
+            img.onload = function () {
+                overlay.innerHTML = '';
+                overlay.appendChild(img);
+            };
+
+            var src = "{{ asset('bundles/uniteampresentation/images/' ~ 'src' ~ '.jpg') }}";
+            img.src = src.replace('src', link.getAttribute("href"));
+
+            $(overlay).fadeIn("slow");
+        }
+
+        document.getElementById('overlay').onclick = function () {
+            $(this).fadeOut("slow");
+            document.getElementById('copyright').style.display = 'block';
+        };
+
+    </script>
+
 {% endblock %}
 
-{% block sourceurl %}{% endblock %}
-
-{% block sourcename %}{% endblock %}
+{% block textsource %}{% endblock %}
