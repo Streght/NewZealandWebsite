@@ -12,7 +12,7 @@
                     <section>
                         <header>
                             <h2>Nau mai ki Aotearoa !</h2>
-                            <span class="byline">Bienvenue en Nouvelle-Zélande !</span>
+                            <span class="byline">Bienvenue en {{ pays.name }} !</span>
                         </header>
                        
                         <p>On l’apprendra grâce au capitaine Cook, la Nouvelle-Zélande, compte deux îles principales et opposées. Au nord, l’île du Nord (« île Fumante »), avec sa cohorte de volcans et ses forêts subtropicales, et l’île du Sud (« île de Jade »), un peu plus grande, avec son échine de crêtes enneigées vite baptisées « Alpes néo-zélandaises ».</p>
@@ -26,6 +26,22 @@
                         <p>Ce vaste pays, étendu sur deux îles étirées sur 1 600 km, s’aborde aisément. Il suffit d’être armé d’un bon véhicule, d’une petite laine en été (une grosse en hiver), d’un vêtement imperméable contre les fréquentes ondées et d’un tube de crème solaire, car le trou dans la couche d’ozone n’est pas si loin.</p>
                         <p>Lorsqu’on a fini de repaître ses mirettes des inoubliables paysages diurnes, on va se perdre dans l’infini sidéral des nuits superbement étoilées : voie lactée, étoile de sud et plein d’autres résonnent à la rétine longtemps, bien longtemps...</p>
                         <p>Eh oui, la Nouvelle-Zélande, où a été tournée la saga du Hobbit, c’est beau, de jour comme de nuit.</p>
+						
+						<p>La {{ pays.name }} possède trois langues officielles : </p>
+						<ul>
+							<li>- {{ langueUn.name }}</li>
+							<li>- {{ langueDeux.name }}</li>
+							<li>- {{ langueTrois.name }}</li>
+						</ul>
+						
+						<p>Les trois villes principales de la Nouvelle-Zélande sont les suivantes : </p>
+						<ul>
+							<li>- {{ villeUn.name }} avec {{ villeUn.population }} habitants</li>
+							<li>- {{ villeDeux.name }} avec {{ villeDeux.population }} habitants<li>
+							<li>- {{ villeTrois.name }} avec {{ villeTrois.population }} habitants<li>
+						</ul>
+						
+						<p>Par ailleurs, l'hymne national du pays s'intitule "{{ pays.anthem }}" et son extension de domaine est "{{ pays.domainname }}"</p>
                     </section>
                 </div>
             </div>

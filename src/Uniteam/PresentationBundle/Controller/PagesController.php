@@ -9,7 +9,34 @@ class PagesController extends Controller {
     public function pageAction($page) {
 
         if ($page == "presentation") {
-            return $this->render('UniteamPresentationBundle:Pages:presentation.html.twig', array('currentpage' => 'presentation'));
+			
+			$repository = $this->getDoctrine()
+					->getManager()
+					->getRepository('UniteamPresentationBundle:Country');
+			$country = $repository->find(1);			
+			
+			$repository = $this->getDoctrine()
+					->getManager()
+					->getRepository('UniteamPresentationBundle:City');
+			$auckland = $repository->findOneByName('Auckland');
+			$christchurch = $repository->findOneByName('ChristChurch');
+			$wellington = $repository->findOneByName('Wellington');
+					
+			$repository = $this->getDoctrine()
+					->getManager()
+					->getRepository('UniteamPresentationBundle:Language');
+			$firstlang = $repository->find(1);
+			$secondlang = $repository->find(2);
+			$thirdlang = $repository->find(3);
+					
+            return $this->render('UniteamPresentationBundle:Pages:presentation.html.twig', array('currentpage' => 'presentation',
+						'pays' => $country,
+						'villeUn' => $auckland,
+						'villeDeux' => $christchurch,
+						'villeTrois' => $wellington,
+						'langueUn' => $firstlang,
+						'langueDeux' => $secondlang,
+						'langueTrois' => $thirdlang));
         }
         if ($page == "histoire") {
 
