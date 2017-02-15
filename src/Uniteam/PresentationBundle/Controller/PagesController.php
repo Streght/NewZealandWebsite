@@ -8,37 +8,10 @@ class PagesController extends Controller {
 
     public function pageAction($page) {
 
-        if ($page == "presentation") {
-			
-			$repository = $this->getDoctrine()
-					->getManager()
-					->getRepository('UniteamPresentationBundle:Country');
-			$country = $repository->find(1);			
-			
-			$repository = $this->getDoctrine()
-					->getManager()
-					->getRepository('UniteamPresentationBundle:City');
-			$auckland = $repository->findOneByName('Auckland');
-			$christchurch = $repository->findOneByName('ChristChurch');
-			$wellington = $repository->findOneByName('Wellington');
-					
-			$repository = $this->getDoctrine()
-					->getManager()
-					->getRepository('UniteamPresentationBundle:Language');
-			$firstlang = $repository->find(1);
-			$secondlang = $repository->find(2);
-			$thirdlang = $repository->find(3);
-					
-            return $this->render('UniteamPresentationBundle:Pages:presentation.html.twig', array('currentpage' => 'presentation',
-						'pays' => $country,
-						'villeUn' => $auckland,
-						'villeDeux' => $christchurch,
-						'villeTrois' => $wellington,
-						'langueUn' => $firstlang,
-						'langueDeux' => $secondlang,
-						'langueTrois' => $thirdlang));
+        if ($page == "accueil") {
+            return $this->render('UniteamPresentationBundle:Pages:accueil.html.twig', array('currentpage' => 'accueil'));
         }
-        if ($page == "histoire") {
+        if ($page == "presentation") {
 
             $repository = $this->getDoctrine()
                     ->getManager()
@@ -55,7 +28,7 @@ class PagesController extends Controller {
                     ->getManager()
                     ->getRepository('UniteamPresentationBundle:Figure')
             ;
-            
+
             $surfacearea = $repository->findOneByName('Superficie totale');
             $watersurfacearea = $repository->findOneByName('Superficie en eau');
             $population = $repository->findOneByName('population totale');
@@ -63,7 +36,26 @@ class PagesController extends Controller {
             $pib = $repository->findOneByName('PIB');
             $pibperinhab = $repository->findOneByName('PIB par habitant');
 
-            return $this->render('UniteamPresentationBundle:Pages:histoire.html.twig', array('currentpage' => 'histoire',
+            $repository = $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('UniteamPresentationBundle:Country');
+            $country = $repository->find(1);
+
+            $repository = $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('UniteamPresentationBundle:City');
+            $auckland = $repository->findOneByName('Auckland');
+            $christchurch = $repository->findOneByName('ChristChurch');
+            $wellington = $repository->findOneByName('Wellington');
+
+            $repository = $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('UniteamPresentationBundle:Language');
+            $firstlang = $repository->find(1);
+            $secondlang = $repository->find(2);
+            $thirdlang = $repository->find(3);
+
+            return $this->render('UniteamPresentationBundle:Pages:presentation.html.twig', array('currentpage' => 'presentation',
                         'reine' => $queen,
                         'gouverneur' => $governor,
                         'ministre' => $primeminister,
@@ -74,7 +66,14 @@ class PagesController extends Controller {
                         'population' => $population,
                         'densitepop' => $popdensity,
                         'pib' => $pib,
-                        'pibparhab' => $pibperinhab
+                        'pibparhab' => $pibperinhab,
+                        'pays' => $country,
+                        'villeUn' => $auckland,
+                        'villeDeux' => $christchurch,
+                        'villeTrois' => $wellington,
+                        'langueUn' => $firstlang,
+                        'langueDeux' => $secondlang,
+                        'langueTrois' => $thirdlang
             ));
         }
         if ($page == "photos") {

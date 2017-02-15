@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="{{ asset('bundles/uniteampresentation/css/style-desktop.css') }}" />
     </head>
     <body 
-        {% if currentpage == "presentation" %}class="homepage"{%else%}class="no-sidebar"{%endif%}
+        {% if currentpage == "accueil" %}class="homepage"{%else%}class="no-sidebar"{%endif%}
         >
 
         <!-- Header -->
@@ -35,8 +35,8 @@
                     <span>Voyage au pays des kiwis</span>
                 </div>
 
-                {% set mainmenu = ["presentation", "histoire", "photos", "sport", "infos", "about"]%}
-                {% set menutext = ["Accueil", "Histoire", "Paysage", "Sport", "Infos utiles", "A propos"]%}
+                {% set mainmenu = ["accueil", "presentation", "photos", "sport", "infos", "about"]%}
+                {% set menutext = ["Accueil", "Présentation", "Paysages", "Sport", "Infos utiles", "A propos"]%}
 
                 <nav id="nav">
                     <ul>
