@@ -51,30 +51,21 @@
 {% block script %}
     <script>
         var src = "{{ asset('bundles/uniteampresentation/images/' ~ 'src' ~ '.jpg') }}";
-        
-        var linksLeft = document.getElementsByClassName('thumbsleft'),
-                linksLenLeft = linksLeft.length;
 
-        for (var i = 0; i < linksLenLeft; i++) {
-            linksLeft[i].onclick = function () {
+        var linksLeftArray = Array.prototype.slice.call(document.getElementsByClassName("thumbsleft"), 0);
+        var linksRightArray = Array.prototype.slice.call(document.getElementsByClassName("thumbsright"), 0);
+
+        var linksArray = linksLeftArray.concat(linksRightArray), linksArrayLen = linksArray.length;
+
+        for (var i = 0; i < linksArrayLen; i++) {
+            linksArray[i].onclick = function () {
                 displayImg(this, src);
                 return false;
             };
         }
 
-        var linksRight = document.getElementsByClassName('thumbsright'),
-                linksLenRight = linksRight.length;
-
-        for (var i = 0; i < linksLenRight; i++) {
-            linksRight[i].onclick = function () {
-                displayImg(this, src);
-                return false;
-            };
-        }
-        
         document.getElementById('overlay').onclick = function () {
             $(this).fadeOut("slow");
-            document.getElementById('copyright').style.display = 'block';
         };
     </script>
 {% endblock %}

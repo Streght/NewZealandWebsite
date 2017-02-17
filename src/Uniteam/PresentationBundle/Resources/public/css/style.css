@@ -465,3 +465,10 @@ ul.style .first {
 .images{
     padding-bottom: 5%;
 }
+
+ul {
+    margin-left: 25px;
+}
+#anthem {
+    color: #4c4c4c;
+}

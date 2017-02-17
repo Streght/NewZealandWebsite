@@ -36,7 +36,8 @@
                             <li>- {{ villeTrois.name }} avec {{ villeTrois.population }} habitants.<li>
                         </ul>
 
-                        <p>Par ailleurs, l'hymne national du pays s'intitule "{{ pays.anthem }}" et son extension de domaine est "{{ pays.domainname }}".</p>
+                        <p>Par ailleurs, l'hymne national du pays s'intitule "<a href='' id="anthem">{{ pays.anthem }}</a>" et son extension de domaine est "{{ pays.domainname }}".</p>
+
 
                         <span class="byline">Avant les Européens</span>
                         <p>La Nouvelle-Zélande est l'un des territoires les plus tardivement peuplés : les premiers colons sont des Polynésiens de l'est (îles de la Société, îles Cook, les îles australes de Polynésie française) qui arrivent probablement entre 1200 et 1300 apr. J.-C., naviguant dans des waka avec l'aide des systèmes météorologiques subtropicaux ou des oiseaux migrateurs ou des baleines et établissent la culture indigène Maoris. C'est vers la même époque que d'autres groupes de Polynésiens s'installent aux îles Kermadec et l'île Norfolk ; ce n'est que plusieurs siècles plus tard qu'ils coloniseront les îles Chatham, y développant leur propre culture Moriori.
@@ -101,3 +102,21 @@
 {% block sourceurl %}https://fr.wikipedia.org/wiki/Nouvelle-Z%C3%A9lande{% endblock %}
 
 {% block sourcename %}Wikipedia - Nouvelle-Zélande{% endblock %}
+
+{% block script %}
+    <script>
+    var x = new Audio('{{ asset('bundles/uniteampresentation/audio/God_Defend_New_Zealand.mp3') }}');
+    var test = false;
+
+    document.getElementById("anthem").onclick = function () {
+        if (!test) {
+            x.play();
+            test = true;
+        } else {
+            x.pause();
+            test = false;
+        }
+        return false;
+    }
+    </script>
+{% endblock %}
