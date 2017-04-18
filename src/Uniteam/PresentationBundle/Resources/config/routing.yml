@@ -1,4 +1,4 @@
-uniteam_pages_histoire:
+uniteam_pages:
     path:      /{page}
     defaults: { _controller: UniteamPresentationBundle:Pages:page }
     
