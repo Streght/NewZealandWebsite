@@ -4,12 +4,44 @@ namespace Uniteam\PresentationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+include_once '/semsol/ARC2.php';
+use ARC2;
+
 class PagesController extends Controller {
 
     public function pageAction($page) {
 
         if ($page == "accueil") {
-            return $this->render('UniteamPresentationBundle:Pages:accueil.html.twig', array('currentpage' => 'accueil'));
+
+            $dbpconfig = array(
+                "remote_store_endpoint" => "http://dbpedia.org/sparql",
+            );
+
+            $store = ARC2::getRemoteStore($dbpconfig);
+
+            $query = '
+                PREFIX owl: <http://www.w3.org/2002/07/owl#>
+                PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                PREFIX dc: <http://purl.org/dc/elements/1.1/>
+                PREFIX : <http://dbpedia.org/resource/>
+                PREFIX dbpedia2: <http://dbpedia.org/property/>
+                PREFIX dbpedia: <http://dbpedia.org/>
+                PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+R
+                SELECT ?birthdate WHERE{
+                :Lionel_Messi dbpedia2:birthDate ?birthdate
+                }';
+
+            $result = $store->query($query, 'rows');
+
+
+            return $this->render('UniteamPresentationBundle:Pages:accueil.html.twig', array(
+                        'currentpage' => 'accueil',
+                        'test' => $result
+            ));
         }
         if ($page == "presentation") {
 
@@ -55,7 +87,8 @@ class PagesController extends Controller {
             $secondlang = $repository->find(2);
             $thirdlang = $repository->find(3);
 
-            return $this->render('UniteamPresentationBundle:Pages:presentation.html.twig', array('currentpage' => 'presentation',
+            return $this->render('UniteamPresentationBundle:Pages:presentation.html.twig', array(
+                        'currentpage' => 'presentation',
                         'reine' => $queen,
                         'gouverneur' => $governor,
                         'ministre' => $primeminister,
