@@ -5,12 +5,12 @@ namespace Uniteam\PresentationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * City
+ * Actor
  *
- * @ORM\Table(name="city")
- * @ORM\Entity(repositoryClass="Uniteam\PresentationBundle\Repository\CityRepository")
+ * @ORM\Table(name="actor")
+ * @ORM\Entity(repositoryClass="Uniteam\PresentationBundle\Repository\ActorRepository")
  */
-class City
+class Actor
 {
     /**
      * @var int
@@ -29,11 +29,11 @@ class City
     private $name;
 
     /**
-     * @var float
+     * @var int
      *
-     * @ORM\Column(name="elevation", type="float")
+     * @ORM\Column(name="nbfilm", type="integer")
      */
-    private $elevation;
+    private $nbfilm;
 
 
     /**
@@ -51,7 +51,7 @@ class City
      *
      * @param string $name
      *
-     * @return City
+     * @return Actor
      */
     public function setName($name)
     {
@@ -71,27 +71,27 @@ class City
     }
 
     /**
-     * Set elevation
+     * Set nbfilm
      *
-     * @param double $elevation
+     * @param integer $nbfilm
      *
-     * @return City
+     * @return Actor
      */
-    public function setElevation($elevation)
+    public function setNbfilm($nbfilm)
     {
-        $this->elevation = $elevation;
+        $this->nbfilm = $nbfilm;
 
         return $this;
     }
 
     /**
-     * Get elevation
+     * Get nbfilm
      *
-     * @return float
+     * @return int
      */
-    public function getElevation()
+    public function getNbfilm()
     {
-        return $this->elevation;
+        return $this->nbfilm;
     }
 }
 

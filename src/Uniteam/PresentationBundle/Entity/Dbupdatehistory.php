@@ -5,12 +5,12 @@ namespace Uniteam\PresentationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * dbupdatehistory
+ * Dbupdatehistory
  *
  * @ORM\Table(name="dbupdatehistory")
- * @ORM\Entity(repositoryClass="Uniteam\PresentationBundle\Repository\dbupdatehistoryRepository")
+ * @ORM\Entity(repositoryClass="Uniteam\PresentationBundle\Repository\DbupdatehistoryRepository")
  */
-class dbupdatehistory
+class Dbupdatehistory
 {
     /**
      * @var int
@@ -24,9 +24,9 @@ class dbupdatehistory
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="lastUpdateTime", type="datetime")
+     * @ORM\Column(name="lastupdatetime", type="datetime")
      */
-    private $lastUpdateTime;
+    private $lastupdatetime;
 
 
     /**
@@ -40,27 +40,27 @@ class dbupdatehistory
     }
 
     /**
-     * Set lastUpdateTime
+     * Set lastupdatetime
      *
-     * @param \DateTime $lastUpdateTime
+     * @param \DateTime $lastupdatetime
      *
-     * @return dbupdatehistory
+     * @return Dbupdatehistory
      */
-    public function setLastUpdateTime($lastUpdateTime)
+    public function setLastupdatetime($lastupdatetime)
     {
-        $this->lastUpdateTime = $lastUpdateTime;
+        $this->lastupdatetime = $lastupdatetime;
 
         return $this;
     }
 
     /**
-     * Get lastUpdateTime
+     * Get lastupdatetime
      *
      * @return \DateTime
      */
-    public function getLastUpdateTime()
+    public function getLastupdatetime()
     {
-        return $this->lastUpdateTime;
+        return $this->lastupdatetime;
     }
 }
 

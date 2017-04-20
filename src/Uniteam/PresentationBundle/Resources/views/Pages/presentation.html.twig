@@ -20,19 +20,35 @@
 
                         <p>La Nouvelle-Zélande fait partie du Commonwealth, c'est donc une monarchie constitutionnelle. Sa reine est {{ reine.name }}, son gouverneur général est {{ gouverneur.name }} et son premier ministre est {{ ministre.name }}.</p>
 
-                        <p>Au niveau géographique, sa superficie est de {{ superficie.value }} {{superficie.unit}}, sa superficie en eau est de {{ superficieeau.value }} {{superficieeau.unit}}. Le pays comptait {{ population.value }} {{population.unit}} en 2016 pour une densité de population de {{ densitepop.value }} {{densitepop.unit}}. Son PIB est de {{ pib.value }} {{pib.unit}} et son PIB par habitant est de {{ pibparhab.value }} {{pibparhab.unit}}.</p>
-
-                        <p>La {{ pays.name }} possède {{langues|length}} langues officielles : </p>
+                        <p>Au niveau géographique, sa superficie est de {{ superficie.value }} {{ superficie.unit }}, sa superficie en eau est de {{ superficieeau.value }} {{ superficieeau.unit }}. Le pays comptait {{ population.value }} {{ population.unit }} en 2016 pour une densité de population de {{ densitepop.value }} {{ densitepop.unit }}. Son PIB est de {{ pib.value }} {{ pib.unit }} et son PIB par habitant est de {{ pibparhab.value }} {{ pibparhab.unit }}.</p>
+                        
+                        <p>La {{ pays.name }} possède {{ langues|length }} langues officielles : </p>
                         <ul>
                             {% for langue in langues %}
-                                <li>- {{langue[0]}}</li>
+                                <li>- {{ langue[0] }}</li>
                                 {% endfor %}
                         </ul>
 
                         <p>Les villes de Nouvelle-Zélande classées par altitude sont les suivantes : </p>
                         <ul>
                             {% for ville in villes %}
-                                <li>- {{ville[0]}} avec une altitude de {{ville[1]}} m</li>
+                                <li>- {{ ville[0] }} avec une altitude de {{ ville[1] }} m</li>
+                                {% endfor %}
+                        </ul>
+
+                        <p>Les 10 acteurs Néo-Zélandais ayant tourné dans le plus de films sont les suivantes : </p>
+                        <ul>
+                            {% for acteur in acteurs %}
+                                <li>- {{ acteur[0] }} avec {{ acteur[1] }} films</li>
+                                {% endfor %}
+                        </ul>
+
+                        <p>Le nombre de personnes présentes sur Wikipedia et nées en Nouvelle-Zélande est de {{ nbnaissance }} et celui décedées en Nouvelle-Zélande est de {{ nbdeces }}.</p>
+
+                        <p>La liste des personnes Néo-Zélandaises présentes sur Wikipedia et décédées hors Nouvelle-Zélande est la suivante : </p>
+                        <ul>
+                            {% for character in characters %}
+                                <li>- {{ character[0] }}</li>
                                 {% endfor %}
                         </ul>
 
