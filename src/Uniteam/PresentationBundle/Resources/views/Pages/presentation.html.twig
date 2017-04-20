@@ -22,18 +22,18 @@
 
                         <p>Au niveau géographique, sa superficie est de {{ superficie.value }} {{superficie.unit}}, sa superficie en eau est de {{ superficieeau.value }} {{superficieeau.unit}}. Le pays comptait {{ population.value }} {{population.unit}} en 2016 pour une densité de population de {{ densitepop.value }} {{densitepop.unit}}. Son PIB est de {{ pib.value }} {{pib.unit}} et son PIB par habitant est de {{ pibparhab.value }} {{pibparhab.unit}}.</p>
 
-                        <p>La {{ pays.name }} possède trois langues officielles : </p>
+                        <p>La {{ pays.name }} possède {{langues|length}} langues officielles : </p>
                         <ul>
-                            <li>- {{ langueUn.name }} ;</li>
-                            <li>- {{ langueDeux.name }} ;</li>
-                            <li>- {{ langueTrois.name }}.</li>
+                            {% for langue in langues %}
+                                <li>- {{langue[0]}}</li>
+                                {% endfor %}
                         </ul>
 
-                        <p>Les trois villes principales de la Nouvelle-Zélande sont les suivantes : </p>
+                        <p>Les villes de Nouvelle-Zélande classées par altitude sont les suivantes : </p>
                         <ul>
-                            <li>- {{ villeUn.name }} avec {{ villeUn.population }} habitants ;</li>
-                            <li>- {{ villeDeux.name }} avec {{ villeDeux.population }} habitants ;<li>
-                            <li>- {{ villeTrois.name }} avec {{ villeTrois.population }} habitants.<li>
+                            {% for ville in villes %}
+                                <li>- {{ville[0]}} avec une altitude de {{ville[1]}} m</li>
+                                {% endfor %}
                         </ul>
 
                         <p>Par ailleurs, l'hymne national du pays s'intitule "<a href='' id="anthem">{{ pays.anthem }}</a>" et son extension de domaine est "{{ pays.domainname }}".</p>
@@ -105,18 +105,18 @@
 
 {% block script %}
     <script>
-    var x = new Audio('{{ asset('bundles/uniteampresentation/audio/God_Defend_New_Zealand.mp3') }}');
-    var test = false;
+        var x = new Audio('{{ asset('bundles/uniteampresentation/audio/God_Defend_New_Zealand.mp3') }}');
+        var test = false;
 
-    document.getElementById("anthem").onclick = function () {
-        if (!test) {
-            x.play();
-            test = true;
-        } else {
-            x.pause();
-            test = false;
+        document.getElementById("anthem").onclick = function () {
+            if (!test) {
+                x.play();
+                test = true;
+            } else {
+                x.pause();
+                test = false;
+            }
+            return false;
         }
-        return false;
-    }
     </script>
 {% endblock %}

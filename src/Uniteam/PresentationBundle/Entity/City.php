@@ -31,9 +31,9 @@ class City
     /**
      * @var int
      *
-     * @ORM\Column(name="population", type="integer")
+     * @ORM\Column(name="elevation", type="integer")
      */
-    private $population;
+    private $elevation;
 
 
     /**
@@ -71,27 +71,27 @@ class City
     }
 
     /**
-     * Set population
+     * Set elevation
      *
-     * @param integer $population
+     * @param integer $elevation
      *
      * @return City
      */
-    public function setPopulation($population)
+    public function setElevation($elevation)
     {
-        $this->population = $population;
+        $this->elevation = $elevation;
 
         return $this;
     }
 
     /**
-     * Get population
+     * Get elevation
      *
      * @return int
      */
-    public function getPopulation()
+    public function getElevation()
     {
-        return $this->population;
+        return $this->elevation;
     }
 }
 
