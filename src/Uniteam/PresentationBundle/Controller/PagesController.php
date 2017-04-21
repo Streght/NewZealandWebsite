@@ -6,18 +6,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PagesController extends Controller {
 
-    function updateDBIfNecessary() {
+    function updateDBIfNecessary($page) {
 
         $em = $this->getDoctrine()->getManager();
 
         $qb = $em->createQueryBuilder();
-        $qb->select('count(date)')
+        $qb->select('count(date),date.page')
                 ->from('UniteamPresentationBundle:Dbupdatehistory', 'date')
-                ->where('date.lastupdatetime > :last')
-                ->setParameter('last', new \DateTime('-1 day'), \Doctrine\DBAL\Types\Type::DATETIME);
+                ->where('date.lastupdatetime > :last AND date.page = :page')
+                ->setParameters(['last' => new \DateTime('-1 day'), 'page' => $page]);
         $nbRecordInLast24h = $qb->getQuery()->getResult();
 
-        if ($nbRecordInLast24h[0]['1'] == 0) {
+        if ($nbRecordInLast24h[0]['1'] == 0 && \strcmp($page, "presentation") === 0) {
 
             $finished = true;
 
@@ -191,6 +191,7 @@ class PagesController extends Controller {
 
             if ($finished === true) {
                 $timeOfUpdate = new \Uniteam\PresentationBundle\Entity\Dbupdatehistory;
+                $timeOfUpdate->setPage($page);
                 $timeOfUpdate->setLastupdatetime(new \DateTime());
                 $em->persist($timeOfUpdate);
 
@@ -440,7 +441,7 @@ class PagesController extends Controller {
                 }
             }
 
-            $this->updateDBIfNecessary();
+            $this->updateDBIfNecessary("presentation");
 
             return $this->render('UniteamPresentationBundle:Pages:presentation.html.twig', ['currentpage' => 'presentation',
                         'reine' => $queen,
@@ -460,7 +461,7 @@ class PagesController extends Controller {
                         'characters' => $character,
                         'nbnaissance' => $nbNaissance,
                         'nbdeces' => $nbDeces,
-                        'acteurs' => $actors,
+                        'acteurs' => $actors
             ]);
         }
         if ($page === "photos") {

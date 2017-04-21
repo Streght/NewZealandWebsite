@@ -22,6 +22,13 @@ class Dbupdatehistory
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="page", type="string", length=255)
+     */
+    private $page;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="lastupdatetime", type="datetime")
@@ -37,6 +44,30 @@ class Dbupdatehistory
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set page
+     *
+     * @param string $page
+     *
+     * @return Dbupdatehistory
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Get page
+     *
+     * @return string
+     */
+    public function getPage()
+    {
+        return $this->page;
     }
 
     /**
